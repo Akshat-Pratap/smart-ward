@@ -30,7 +30,7 @@ export default function AlertBox({ alert }) {
           {message}
         </p>
         {timestamp && (
-          <p className="text-[10px] text-dark-500 mt-1">{timeAgo(timestamp)}</p>
+          <p className="text-[10px] text-slate-400 mt-1">{timeAgo(timestamp)}</p>
         )}
       </div>
 
