@@ -27,9 +27,9 @@ export default function Alerts() {
 
   const filterButtons = [
     { key: 'all', label: 'All', color: '' },
-    { key: 'critical', label: 'Critical', color: 'text-red-400' },
-    { key: 'warning', label: 'Warning', color: 'text-amber-400' },
-    { key: 'normal', label: 'Normal', color: 'text-emerald-400' },
+    { key: 'critical', label: 'Critical', color: 'text-red-600' },
+    { key: 'warning', label: 'Warning', color: 'text-amber-600' },
+    { key: 'normal', label: 'Normal', color: 'text-emerald-600' },
   ];
 
   const counts = {
@@ -43,17 +43,17 @@ export default function Alerts() {
     <div className="space-y-6">
       {/* Header */}
       <div>
-        <h1 className="text-2xl font-extrabold text-dark-100 tracking-tight">Alerts</h1>
-        <p className="text-sm text-dark-400 mt-0.5">Real-time hospital notifications</p>
+        <h1 className="text-2xl font-extrabold text-emerald-900 tracking-tight">Alerts</h1>
+        <p className="text-sm text-slate-500 mt-0.5">Real-time hospital notifications</p>
       </div>
 
       {/* Summary chips */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
         {[
-          { label: 'Total', count: counts.all, cls: 'bg-dark-800/60 text-dark-200 border-dark-700/40' },
-          { label: 'Critical', count: counts.critical, cls: 'bg-red-500/10 text-red-400 border-red-500/20' },
-          { label: 'Warning', count: counts.warning, cls: 'bg-amber-500/10 text-amber-400 border-amber-500/20' },
-          { label: 'Normal', count: counts.normal, cls: 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20' },
+          { label: 'Total', count: counts.all, cls: 'bg-white/70 text-slate-700 border-slate-200' },
+          { label: 'Critical', count: counts.critical, cls: 'bg-red-50 text-red-600 border-red-200' },
+          { label: 'Warning', count: counts.warning, cls: 'bg-amber-50 text-amber-600 border-amber-200' },
+          { label: 'Normal', count: counts.normal, cls: 'bg-emerald-50 text-emerald-600 border-emerald-200' },
         ].map(({ label, count, cls }) => (
           <div key={label} className={`rounded-xl border p-4 text-center ${cls}`}>
             <p className="text-xl font-bold">{count}</p>
@@ -64,15 +64,15 @@ export default function Alerts() {
 
       {/* Filter */}
       <div className="flex items-center gap-2">
-        <Filter className="w-4 h-4 text-dark-500" />
+        <Filter className="w-4 h-4 text-slate-400" />
         {filterButtons.map(({ key, label }) => (
           <button
             key={key}
             onClick={() => setFilter(key)}
             className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all duration-200
               ${filter === key
-                ? 'bg-ward-500/20 text-ward-400 border border-ward-500/30'
-                : 'text-dark-400 hover:text-dark-200 bg-dark-800/40 border border-dark-700/30 hover:border-dark-600/50'
+                ? 'bg-emerald-100 text-emerald-700 border border-emerald-300'
+                : 'text-slate-500 hover:text-emerald-700 bg-white/60 border border-slate-200 hover:border-emerald-200'
               }`}
           >
             {label}
@@ -84,8 +84,8 @@ export default function Alerts() {
       <div className="space-y-2">
         {filtered.length === 0 ? (
           <div className="glass-card p-12 text-center">
-            <Bell className="w-8 h-8 text-dark-600 mx-auto mb-3" />
-            <p className="text-dark-500 text-sm">No alerts to display.</p>
+            <Bell className="w-8 h-8 text-slate-300 mx-auto mb-3" />
+            <p className="text-slate-400 text-sm">No alerts to display.</p>
           </div>
         ) : (
           filtered.map((a, i) => (

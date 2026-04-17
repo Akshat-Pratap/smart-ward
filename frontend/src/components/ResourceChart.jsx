@@ -10,16 +10,16 @@ export default function ResourceChart({ items = [] }) {
       {items.map(({ label, used, total, color }, idx) => {
         const pct = total > 0 ? clampPercent((used / total) * 100) : 0;
         const barColor =
-          color || (pct > 85 ? 'from-red-500 to-red-400' : pct > 60 ? 'from-amber-500 to-amber-400' : 'from-ward-500 to-ward-400');
+          color || (pct > 85 ? 'from-red-500 to-red-400' : pct > 60 ? 'from-amber-500 to-amber-400' : 'from-emerald-500 to-teal-400');
 
         return (
           <div key={idx} className="animate-fade-in" style={{ animationDelay: `${idx * 80}ms` }}>
             {/* Label row */}
             <div className="flex items-center justify-between mb-2">
-              <span className="text-sm font-medium text-dark-200">{label}</span>
-              <span className="text-xs text-dark-400">
-                <span className="font-semibold text-dark-200">{used}</span> / {total}{' '}
-                <span className={`ml-1 font-bold ${pct > 85 ? 'text-red-400' : pct > 60 ? 'text-amber-400' : 'text-ward-400'}`}>
+              <span className="text-sm font-medium text-slate-700">{label}</span>
+              <span className="text-xs text-slate-500">
+                <span className="font-semibold text-slate-700">{used}</span> / {total}{' '}
+                <span className={`ml-1 font-bold ${pct > 85 ? 'text-red-600' : pct > 60 ? 'text-amber-600' : 'text-emerald-600'}`}>
                   ({Math.round(pct)}%)
                 </span>
               </span>

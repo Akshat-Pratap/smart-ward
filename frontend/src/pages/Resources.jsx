@@ -12,12 +12,12 @@ import ResourceChart from '../components/ResourceChart';
 /* ---------- Mini resource stat card ---------- */
 function ResourceStat({ icon: Icon, label, value, accent = 'ward' }) {
   const accents = {
-    ward: 'text-ward-400 bg-ward-500/10 border-ward-500/20',
-    sky: 'text-sky-400 bg-sky-500/10 border-sky-500/20',
-    amber: 'text-amber-400 bg-amber-500/10 border-amber-500/20',
-    violet: 'text-violet-400 bg-violet-500/10 border-violet-500/20',
-    rose: 'text-rose-400 bg-rose-500/10 border-rose-500/20',
-    emerald: 'text-emerald-400 bg-emerald-500/10 border-emerald-500/20',
+    ward: 'text-emerald-600 bg-emerald-50 border-emerald-200',
+    sky: 'text-sky-600 bg-sky-50 border-sky-200',
+    amber: 'text-amber-600 bg-amber-50 border-amber-200',
+    violet: 'text-violet-600 bg-violet-50 border-violet-200',
+    rose: 'text-rose-600 bg-rose-50 border-rose-200',
+    emerald: 'text-emerald-600 bg-emerald-50 border-emerald-200',
   };
   return (
     <div className="glass-card-hover p-5 flex items-center gap-4">
@@ -25,8 +25,8 @@ function ResourceStat({ icon: Icon, label, value, accent = 'ward' }) {
         <Icon className="w-5 h-5" />
       </div>
       <div>
-        <p className="text-2xl font-extrabold text-dark-100">{value ?? '—'}</p>
-        <p className="text-xs text-dark-400 mt-0.5">{label}</p>
+        <p className="text-2xl font-extrabold text-slate-800">{value ?? '—'}</p>
+        <p className="text-xs text-slate-500 mt-0.5">{label}</p>
       </div>
     </div>
   );
@@ -70,8 +70,8 @@ export default function Resources() {
     <div className="space-y-6">
       {/* Header */}
       <div>
-        <h1 className="text-2xl font-extrabold text-dark-100 tracking-tight">Resources</h1>
-        <p className="text-sm text-dark-400 mt-0.5">Hospital resource allocation &amp; usage</p>
+        <h1 className="text-2xl font-extrabold text-emerald-900 tracking-tight">Resources</h1>
+        <p className="text-sm text-slate-500 mt-0.5">Hospital resource allocation &amp; usage</p>
       </div>
 
       {/* Stat cards */}
@@ -86,28 +86,28 @@ export default function Resources() {
       {/* Staff */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div className="glass-card p-5 flex items-center gap-4 animate-slide-up" style={{ animationDelay: '360ms' }}>
-          <div className="w-12 h-12 rounded-xl border flex items-center justify-center text-sky-400 bg-sky-500/10 border-sky-500/20">
+          <div className="w-12 h-12 rounded-xl border flex items-center justify-center text-sky-600 bg-sky-50 border-sky-200">
             <Stethoscope className="w-5 h-5" />
           </div>
           <div>
-            <p className="text-2xl font-extrabold text-dark-100">{r.doctors_on_duty ?? '—'}</p>
-            <p className="text-xs text-dark-400 mt-0.5">Doctors on Duty</p>
+            <p className="text-2xl font-extrabold text-slate-800">{r.doctors_on_duty ?? '—'}</p>
+            <p className="text-xs text-slate-500 mt-0.5">Doctors on Duty</p>
           </div>
         </div>
         <div className="glass-card p-5 flex items-center gap-4 animate-slide-up" style={{ animationDelay: '420ms' }}>
-          <div className="w-12 h-12 rounded-xl border flex items-center justify-center text-emerald-400 bg-emerald-500/10 border-emerald-500/20">
+          <div className="w-12 h-12 rounded-xl border flex items-center justify-center text-emerald-600 bg-emerald-50 border-emerald-200">
             <Users className="w-5 h-5" />
           </div>
           <div>
-            <p className="text-2xl font-extrabold text-dark-100">{r.nurses_on_duty ?? '—'}</p>
-            <p className="text-xs text-dark-400 mt-0.5">Nurses on Duty</p>
+            <p className="text-2xl font-extrabold text-slate-800">{r.nurses_on_duty ?? '—'}</p>
+            <p className="text-xs text-slate-500 mt-0.5">Nurses on Duty</p>
           </div>
         </div>
       </div>
 
       {/* Usage chart */}
       <div className="glass-card p-6 animate-slide-up" style={{ animationDelay: '480ms' }}>
-        <h2 className="text-sm font-semibold text-dark-200 mb-5">Usage Overview</h2>
+        <h2 className="text-sm font-semibold text-slate-700 mb-5">Usage Overview</h2>
         <ResourceChart items={chartItems} />
       </div>
     </div>
