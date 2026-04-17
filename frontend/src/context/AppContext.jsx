@@ -60,6 +60,38 @@ export function AppProvider({ children }) {
 
   const intervalRef = useRef(null);
 
+  // ---------- Helpers to map backend → frontend field names ----------
+  const mapPatient = (p) => ({
+    ...p,
+    _id: p._id || p.patientId,
+    heart_rate: p.vitals?.heartRate ?? p.heart_rate,
+    oxygen_level: p.vitals?.oxygen ?? p.oxygen_level,
+    bp_systolic: p.vitals?.bpSystolic,
+    bp_diastolic: p.vitals?.bpDiastolic,
+    condition: p.status || p.condition || 'stable',
+    ward: p.ward,
+  });
+
+  const mapResource = (r) => ({
+    ...r,
+    total_beds: r.totalBeds ?? r.total_beds ?? 0,
+    occupied_beds: r.occupiedBeds ?? r.occupied_beds ?? 0,
+    available_beds: r.availableBeds ?? r.available_beds ?? 0,
+    icu_total: r.icuBeds ?? r.icu_total ?? 0,
+    icu_occupied: r.icuOccupied ?? r.icu_occupied ?? 0,
+    ventilators_total: r.ventilators ?? r.ventilators_total ?? 0,
+    ventilators_in_use: r.ventilatorsInUse ?? r.ventilators_in_use ?? 0,
+    oxygen_cylinders: r.oxygenCylinders ?? r.oxygen_cylinders ?? 0,
+    doctors_on_duty: r.doctorsOnDuty ?? r.doctors_on_duty ?? 0,
+    nurses_on_duty: r.nursesOnDuty ?? r.nurses_on_duty ?? 0,
+  });
+
+  const mapAlert = (a) => ({
+    ...a,
+    _id: a._id || a.alertId,
+    severity: (a.type || a.severity || 'warning').toLowerCase(),
+  });
+
   // ---------- Fetch all data ----------
   const fetchAll = useCallback(async (showLoading = false) => {
     if (showLoading) setLoading(true);
@@ -68,8 +100,9 @@ export function AppProvider({ children }) {
 
     // Patients
     try {
-      const data = await getPatients();
-      setPatients(Array.isArray(data) ? data : data?.patients || DEMO_PATIENTS);
+      const raw = await getPatients();
+      const list = raw?.data ?? (Array.isArray(raw) ? raw : raw?.patients);
+      setPatients(Array.isArray(list) ? list.map(mapPatient) : DEMO_PATIENTS);
     } catch {
       newErrors.patients = true;
       setPatients((prev) => (prev.length ? prev : DEMO_PATIENTS));
@@ -77,8 +110,9 @@ export function AppProvider({ children }) {
 
     // Resources
     try {
-      const data = await getResources();
-      setResources(data || DEMO_RESOURCES);
+      const raw = await getResources();
+      const obj = raw?.data ?? raw;
+      setResources(obj ? mapResource(obj) : DEMO_RESOURCES);
     } catch {
       newErrors.resources = true;
       setResources((prev) => prev || DEMO_RESOURCES);
@@ -86,8 +120,9 @@ export function AppProvider({ children }) {
 
     // Alerts
     try {
-      const data = await getAlerts();
-      setAlerts(Array.isArray(data) ? data : data?.alerts || DEMO_ALERTS);
+      const raw = await getAlerts();
+      const list = raw?.data ?? (Array.isArray(raw) ? raw : raw?.alerts);
+      setAlerts(Array.isArray(list) ? list.map(mapAlert) : DEMO_ALERTS);
     } catch {
       newErrors.alerts = true;
       setAlerts((prev) => (prev.length ? prev : DEMO_ALERTS));

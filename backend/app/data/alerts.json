@@ -1,0 +1,42 @@
+[
+  {
+    "alertId": "A001",
+    "type": "CRITICAL",
+    "message": "Patient P005 (Vikram Singh) — Oxygen level dropped to 88%",
+    "patientId": "P005",
+    "timestamp": "2026-04-17T07:30:00Z",
+    "resolved": false
+  },
+  {
+    "alertId": "A002",
+    "type": "WARNING",
+    "message": "Patient P008 (Kavya Nair) — Heart rate elevated to 130 bpm",
+    "patientId": "P008",
+    "timestamp": "2026-04-17T07:35:00Z",
+    "resolved": false
+  },
+  {
+    "alertId": "A003",
+    "type": "CRITICAL",
+    "message": "Patient P016 (Pooja Bhatt) — Oxygen level dropped to 84%",
+    "patientId": "P016",
+    "timestamp": "2026-04-17T07:40:00Z",
+    "resolved": false
+  },
+  {
+    "alertId": "A004",
+    "type": "SYSTEM",
+    "message": "ICU occupancy at 70% — approaching capacity threshold",
+    "patientId": null,
+    "timestamp": "2026-04-17T07:45:00Z",
+    "resolved": false
+  },
+  {
+    "alertId": "A005",
+    "type": "WARNING",
+    "message": "Patient P011 (Rajesh Kumar) — Heart rate elevated to 118 bpm",
+    "patientId": "P011",
+    "timestamp": "2026-04-17T07:50:00Z",
+    "resolved": false
+  }
+]

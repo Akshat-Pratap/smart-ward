@@ -1,0 +1,19 @@
+{
+  "totalBeds": 120,
+  "occupiedBeds": 87,
+  "availableBeds": 33,
+  "icuBeds": 20,
+  "icuOccupied": 14,
+  "icuAvailable": 6,
+  "ventilators": 15,
+  "ventilatorsInUse": 9,
+  "oxygenCylinders": 50,
+  "oxygenInUse": 32,
+  "emergencyBeds": 10,
+  "emergencyOccupied": 4,
+  "operatingRooms": 6,
+  "orInUse": 3,
+  "wheelchairs": 25,
+  "wheelchairsInUse": 12,
+  "lastUpdated": "2026-04-17T08:00:00Z"
+}
