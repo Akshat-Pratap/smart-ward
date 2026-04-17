@@ -6,7 +6,7 @@ import PatientCard from '../components/PatientCard';
 export default function Patients() {
   const { patients, loading } = useAppContext();
   const [search, setSearch] = useState('');
-  const [filter, setFilter] = useState('all'); // all | critical | warning | normal
+  const [filter, setFilter] = useState('all'); // all | critical | moderate | stable
 
   const filtered = useMemo(() => {
     let list = patients;
@@ -38,6 +38,8 @@ export default function Patients() {
     { key: 'critical', label: 'Critical' },
     { key: 'moderate', label: 'Moderate' },
     { key: 'stable', label: 'Stable' },
+    { key: 'warning', label: 'Moderate' },
+    { key: 'normal', label: 'Stable' },
   ];
 
   return (
