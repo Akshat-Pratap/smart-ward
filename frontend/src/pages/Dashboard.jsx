@@ -100,6 +100,9 @@ export default function Dashboard() {
             </span>
             SYSTEM LIVE
           </div>
+        <div className="hidden sm:flex items-center gap-2 stat-chip badge-stable">
+          <Activity className="w-3 h-3" />
+          <span>Live</span>
         </div>
       </div>
 

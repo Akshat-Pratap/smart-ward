@@ -33,6 +33,13 @@ export default function Login() {
       return;
     }
 
+    if (role === 'Admin') {
+      if (email !== 'admin@smartward.com' || password !== '123456') {
+        setError('Invalid admin credentials.');
+        return;
+      }
+    }
+
     try {
       login(email, password, role);
       const dest = location.state?.from?.pathname || defaultPaths[role] || '/admin';
