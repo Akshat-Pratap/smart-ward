@@ -39,7 +39,7 @@ app = socketio.ASGIApp(sio, fastapi_app)
 # ── CORS middleware ─────────────────────────────────────────────────────────
 fastapi_app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=["http://localhost:5173","https://smart-ward-nine.vercel.app"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
